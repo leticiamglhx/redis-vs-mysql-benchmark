@@ -1,0 +1,19 @@
+{
+  "arquivo": "dados/taxigov-corridas-2024.zip",
+  "membro_zip": null,
+  "separador": ";",
+  "encoding": "utf-8-sig",
+  "decimal": ",",
+  "milhar": ".",
+  "formato_data": "%d/%m/%Y %H:%M:%S",
+  "colunas": {
+    "id": "PREENCHER_COM_COLUNA_REAL",
+    "data": "PREENCHER_COM_COLUNA_REAL",
+    "origem": "PREENCHER_COM_COLUNA_REAL",
+    "destino": "PREENCHER_COM_COLUNA_REAL",
+    "valor": "PREENCHER_COM_COLUNA_REAL",
+    "distancia": "PREENCHER_COM_COLUNA_REAL",
+    "bairro_origem": null,
+    "bairro_destino": null
+  }
+}

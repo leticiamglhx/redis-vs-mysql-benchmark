@@ -1,0 +1,20 @@
+{
+  "arquivo": "dados/taxigov-corridas-completo.zip",
+  "membro_zip": "taxigov-corridas-completo.csv",
+  "separador": ",",
+  "encoding": "utf-8-sig",
+  "decimal": ".",
+  "milhar": null,
+  "formato_data": "%Y-%m-%d %H:%M:%S.%f",
+  "id_componentes": ["base_origem", "qru_corrida"],
+  "colunas": {
+    "id": "qru_corrida",
+    "data": "data_inicio",
+    "origem": "origem_endereco",
+    "destino": "destino_efetivo_endereco",
+    "valor": "valor_corrida",
+    "distancia": "km_total",
+    "bairro_origem": "origem_bairro",
+    "bairro_destino": null
+  }
+}

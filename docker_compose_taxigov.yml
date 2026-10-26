@@ -1,0 +1,99 @@
+services:
+
+  hadoop:
+    image: apache/hadoop:latest
+    container_name: hadoop
+    hostname: hadoop
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+      - "9000:9000"
+    volumes:
+      - hadoop_data:/opt/hadoop/data
+    networks:
+      - bigdata
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - bigdata
+
+  mysql:
+    image: mysql:8.4
+    container_name: mysql-taxigov
+    hostname: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD:?Defina MYSQL_PASSWORD no arquivo .env}
+      MYSQL_DATABASE: taxigov
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - bigdata
+
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    hostname: cassandra
+    ports:
+      - "9042:9042"
+      - "7000:7000"
+      - "7001:7001"
+      - "7199:7199"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    networks:
+      - bigdata
+
+  mongodb:
+    image: mongodb/mongodb-community-server:8.0-ubi8-slim
+    container_name: mongodb
+    hostname: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - bigdata
+
+  neo4j:
+    image: neo4j:5.26.29-trixie
+    container_name: neo4j
+    hostname: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: neo4j/admin
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/var/lib/neo4j/import
+      - neo4j_plugins:/plugins
+    networks:
+      - bigdata
+
+volumes:
+  hadoop_data:
+  redis_data:
+  mysql_data:
+  cassandra_data:
+  mongodb_data:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  neo4j_plugins:
+
+networks:
+  bigdata:
+    driver: bridge
